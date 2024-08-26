@@ -1,8 +1,8 @@
 ---
-title: "MB5370 Module 04. Workshop 1 - Introduction"
-author: "Ben Cresswell"
+title: "MB5370 Module 04. Workshop 1"
+author: "Hayato Murai"
 output: html_document
-date: "2024-03-22"
+date: "2024-08-26"
 ---
 
 ```{r setup, include=FALSE}
@@ -150,7 +150,7 @@ Read ?facet_wrap. What does nrow do? What does ncol do? What other options contr
 We already used points:
 ```{r}
 ggplot(data = mpg) + 
-  geom_points(mapping = aes(x = displx, y = hwy))
+  geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
 
@@ -337,11 +337,11 @@ ggplot(data = diamonds) +
 
 
 # Aesthetic adjustments adjustments
-Another way to boost the way you can convey information with plots using ggplot2 is to use aesthetics like colour or fill to change aspects of bar colours. We already did this once, but there are multiple options available to you, including changing the fill our outline colours.
+Another way to boost the way you can convey information with plots using ggplot2 is to use aesthetics like colour or fill to change aspects of bar colours. We already did this once, but there are multiple options available to you, including changing the fill or outline colours.
 
 ```{r}
 ggplot(data = diamonds) + 
-  geom_bar(mapping = aes(x = cut, colour = cut))
+  geom_bar(mapping = aes(x = cut, colour = cut)) #not really visible
 ggplot(data = diamonds) + 
   geom_bar(mapping = aes(x = cut, fill = cut))
 ```
@@ -368,7 +368,7 @@ ggplot(data = diamonds) +
 # To alter transparency (alpha)
 ```{r}
 ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) + 
-  geom_bar(alpha = 1/5, position = "identity")
+  geom_bar(alpha = 1/5, position = "identity") 
 ```
 
 
@@ -376,6 +376,9 @@ ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) +
 ```{r}
 ggplot(data = diamonds, mapping = aes(x = cut, colour = clarity)) + 
   geom_bar(fill = NA, position = "identity")
+
+#If you use position = "identity", you will be able to place each object exactly where it falls in the context of the graph. This is vital for point charts like scatter plots but makes a mess in a bar plot situation by showing too much information (a bar plot generally summarises information). So in this case we will need to alter the bar aesthetic.
+
 ```
 
 
@@ -397,9 +400,12 @@ ggplot(data = diamonds) +
 # Jittering
 position = "jitter" adds a small amount of random noise to each point to avoid overplotting when points overlap. This is useful for scatterplots but not barplots.
 ```{r}
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy)) #Lots of hidden overlapped data
+
 ggplot(data = mpg) + 
-  #geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
-  geom_point(mapping = aes(x = displ, y = hwy))
+  geom_point(mapping = aes(x = displ, y = hwy), position = "jitter") # Jittered data overlaps less
+  
 ```
 
 
