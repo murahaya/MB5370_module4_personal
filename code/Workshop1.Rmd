@@ -34,7 +34,7 @@ summary(mpg)
 # Create first plot
 ```{r}
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = disp, y = hwy))
+  geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
 The plot shows a negative relationship between engine size (displ) and fuel efficiency (hwy). In other words, cars with big engines use more fuel. What does this say about fuel efficiency and engine size?
@@ -96,10 +96,12 @@ ggplot(data = mpg) +
 
 # Troubleshooting 
 
+```{r}
+ggplot(data = mpg) 
++ geom_point(mapping = aes(x = displ, y = hwy)) 
+# the + should be on top line
 
-
-
-
+```
 
 # Faceting
 
@@ -136,6 +138,11 @@ Read ?facet_wrap. What does nrow do? What does ncol do? What other options contr
 
 ```{r}
 
+?facet_wrap
+
+#nrow is where you specify the number of rows in a facet wrap 
+#ncol is where you specify the number of columns in a facet wrap
+
 ```
 
 
@@ -143,7 +150,7 @@ Read ?facet_wrap. What does nrow do? What does ncol do? What other options contr
 We already used points:
 ```{r}
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displx, y = hwy))
+  geom_points(mapping = aes(x = displx, y = hwy))
 ```
 
 
@@ -163,10 +170,12 @@ So let’s recap. A geom is an object that your plot uses to represent the data.
 ```{r}
 ggplot(data = mpg) + 
   #geom_point(mapping = aes(x = displ, y = hwy)) + # points horrible 
-  geom_smooth(mappings = aes(x = displ, y = hwy)) # try smooth line
+  geom_smooth(mapping = aes(x = displ, y = hwy)) # try smooth line
 ```
 
 Question: how does R work out where to plot the line??? Can use the chunk output to inform us. Can also use the help menu.
+
+
 
 # Changing linetype
 ```{r}
