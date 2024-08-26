@@ -175,6 +175,9 @@ ggplot(data = mpg) +
 
 Question: how does R work out where to plot the line??? Can use the chunk output to inform us. Can also use the help menu.
 
+```{r}
+# R uses a specified formula to plot the line. Default is Loess and y = x formula
+```
 
 
 # Changing linetype
@@ -203,7 +206,7 @@ ggplot(data = mpg) +
 We already did this one way
 ```{r}
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(xx = displ, y = hwy)) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +
   geom_smooth(mapping = aes(x = displ, y = hwy))
 ```
 
@@ -232,12 +235,24 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 ```
 Question: what does the "se = FALSE" do?
 
+```{r}
+
+# The "se = FALSE" hides the shaded confidence interval around the line
+
+```
+
 
 # Exercise:
 1.  What geom would you use to draw a line chart? A boxplot? A histogram? An area chart?
 2.  Run this code in your head and predict what the output will look like. Then, run the code in R and check your predictions.
 
 ```{r}
+
+ggplot(data=mpg, mapping = aes(x = displ, y = hwy, group=class, fill=class))+ 
+  #geom_smooth()
+  geom_boxplot()
+  #geom_histogram()
+  #geom_area()
 
 ```
 
@@ -251,6 +266,10 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 ggplot() + 
   geom_point(data = mpg, mapping = aes(x = displ, y = hwy)) + 
   geom_smooth(data = mpg, mapping = aes(x = displ, y = hwy))
+
+# These graphs will look identical and display the same data in the same way.
+# The first graphing method is better because it uses fewer characters and 
+# lines of code 
 ```
 
 
@@ -287,12 +306,18 @@ demo
 ggplot(data = demo) +
   geom_bar(mapping = aes(x = cut, y = freq), stat = "identity")
 ```
-Question: Why did we specify now specify a y axis?
+Question: Why did we now specify a y axis?
+
+```{r}
+# Y axis is specified so the default "count" is not used 
+```
+
 
 # What if we want to know the proportion rather than the absolute frequency?
 ```{r}
 ggplot(data = diamonds) + 
-  geom_bar(mapping = aes(x = cut, y = stat(prop), group = 1))
+  #geom_bar(mapping = aes(x = cut, y = stat(prop), group = 1))
+  geom_bar(mapping = aes(x = cut, y = stage(after_stat = prop), group = 1))
 ```
 
 Question: does anyone get the warning that's in the workbook?
