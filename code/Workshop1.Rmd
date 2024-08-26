@@ -408,9 +408,19 @@ ggplot(data = mpg) +
   
 ```
 
+# Layered Grammar of Graphics
 
+Classic GGplot Template
 
-
+```{r}
+#ggplot(data = <DATA>) + 
+#  <GEOM_FUNCTION>(
+#     mapping = aes(<MAPPINGS>),
+#     stat = <STAT>, 
+#     position = <POSITION>
+#  ) +
+#  <FACET_FUNCTION>
+```
 
 
 
