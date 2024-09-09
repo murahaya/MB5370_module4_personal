@@ -142,6 +142,62 @@ table3 %>%
   unite("rate", cases, population, sep = "/") 
 ```
 
+#Missing data
+When there is an "NA" that means there is an explicit absence of data, IE the record for that input was "no value". 
+
+Blank cells indicate an implicit absence which means it is not know if there is a value for that point. 
+
+#Filling in missing values 
+
+```{r}
+x <- c(1, 4, 5, 7, NA)
+coalesce(x, 0)
+#> [1] 1 4 5 7 0
+```
+Replaces all NA values with 0
+
+#NAN
+One special type of missing value worth mentioning is NaN or Not a Number. It typically behaves the same as NA but in some rare cases you may need to distinguish it using is.nan(x):
+
+
+
+
+
+#Relational Data
+The three families of verbs designed to work with relational data are:
+1 Mutating joins - add new variables to one dataframe from matching observations in another
+
+2 Filtering joins - filter observations from one data frame based on whether or not they match an observation in the other table
+
+3 Set operations - treat observations as if they are set elements
+
+```{r}
+library(tidyverse)
+install.packages("nycflights13")
+library(nycflights13)
+```
+
+Join datasets through keys. Keys are variables that uniquely identify an observation 
+
+Primary keys identify a specific observation 
+Foreign keys identify an observation in another table
+
+#Mutating Joins
+
+```{r}
+x <- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+```
 
 
 
