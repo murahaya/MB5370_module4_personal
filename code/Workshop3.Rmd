@@ -9,7 +9,7 @@ usethis::use_git
 #Data Wrangling in TidyR
 ```{r}
 
-install.packages("tidyverse")
+#install.packages("tidyverse")
 library(tidyverse)
 
 ```
@@ -173,8 +173,8 @@ The three families of verbs designed to work with relational data are:
 
 ```{r}
 library(tidyverse)
-install.packages("nycflights13")
-library(nycflights13)
+#install.packages("nycflights13")
+#library(nycflights13)
 ```
 
 Join datasets through keys. Keys are variables that uniquely identify an observation 
