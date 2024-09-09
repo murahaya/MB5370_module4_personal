@@ -216,3 +216,14 @@ The other category of join is the outer join which keeps observations that appea
 The left join should be your default join, because it preserves the original observations even when there isn’t a match.
 
 
+#Pipes 
+n this subject we’ve learned how to use quite a few dplyr functions for data wrangling, including: 'filter', 'group_by', 'summarize', and 'mutate'. So far we’ve coded each of those functions as separate steps in your code. Let’s look at how pipes can be used to code all of those sequentially in a single statement. This reduces the amount of code written, the number of variables you produce and helps turn your code much more into a ‘sentence’ like structure. 
+
+#End of Workshop 3 
+oday I think you’ve built a few key life changing skills that one day I hope you look back at and understand how you’ve made some massive progress as a marine biologist, a computer user and as a burgeoning data scientist. These are:
+You now understand why your dataframes need to be in an appropriate structure, how to tidy your data to get there and the tools you need to use to do it.
+You have the skills now to join datasets together. This skill alone can mean you can massively upscale your thinking about what you can do with your own data (like joining some temperature or tide gauge data to your field data!) 
+
+
+
+
