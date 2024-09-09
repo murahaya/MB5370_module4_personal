@@ -197,7 +197,22 @@ y <- tribble(
      2, "y2",
      4, "y3"
 )
-```
 
+x %>% 
+  inner_join(y, by = "key")
+#> # A tibble: 2 × 3
+#>     key val_x val_y
+#>   <dbl> <chr> <chr>
+#> 1     1 x1    y1   
+#> 2     2 x2    y2
+```
+The other category of join is the outer join which keeps observations that appear in at least one of the tables. There are three types of outer joins:
+1 left_join() keeps all observations in x (we’ve seen this in our first example)
+
+2 right_join() keeps all observations in y
+
+3 full_join() keeps all observations in x and y
+
+The left join should be your default join, because it preserves the original observations even when there isn’t a match.
 
 
