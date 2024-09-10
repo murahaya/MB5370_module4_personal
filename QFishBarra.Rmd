@@ -15,27 +15,21 @@ Line fishing harvest for Barramundi was analysed
 
 ```{r}
 
-barra <- read_csv()
+barra <- read_csv("C:\\Users\\murai\\Desktop\\Github Data\\MB5370_module4_personal\\data\\export1.csv")
+
+print(barra) # Data set is incredibly messy
 
 ```
-
-Data table now loaded in R 
-```{r}
-
-head(barra) #data set is read as characters 
-
-```
-
 Verify data was loaded correctly
 
 # Cleaning data
-
 Data is being read as characters, so need to convert to numeric 
 ```{r}
+str(barra)
 
-barra <- mutate_all(barra, function(x) as.numeric(as.character(x)))
+barra <- barra |> mutate_at(c('Days', 'Kilograms', 'CalendarYear'), as.numeric) #This also solves the problem of NA variations
 
-print(barra)
+str(barra)
 
 ```
 
@@ -52,19 +46,17 @@ NA values are read correctly
 
 barra <- drop_na(barra) #Removing NA values in data set
 
-str(barra) #check clean data set
+print(barra) #check clean data set
 
 ```
-
-
-
 # Now graph data using ggplot2
 
 ```{r}
 
-ggplot(barra, aes(x = CalendarYear , y = Tonnes))+ #Comparing catch tonnage over time
+ggplot(barra, aes(x=Days , y=Kilograms, color=Region))+ #Comparing catch tonnage over time
   geom_smooth(se=FALSE)+
-  geom_point()
+  geom_point()+
+  facet_wrap(vars(CalendarYear))
   
 ```
 
