@@ -1,0 +1,75 @@
+---
+title: "QFish Data Tidy"
+author: "Hayato Murai"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(janitor)
+```
+# Loading and cleaning data from the QFish repository 
+
+Line fishing harvest for Barramundi was analysed 
+
+```{r}
+
+barra <- read_csv()
+
+```
+
+Data table now loaded in R 
+```{r}
+
+head(barra) #data set is read as characters 
+
+```
+
+Verify data was loaded correctly
+
+# Cleaning data
+
+Data is being read as characters, so need to convert to numeric 
+```{r}
+
+barra <- mutate_all(barra, function(x) as.numeric(as.character(x)))
+
+print(barra)
+
+```
+
+Need to remove N/A values from dataset
+
+```{r}
+
+is.na(barra) #checking to see if R can read any NA values in the data set
+
+```
+NA values are read correctly 
+
+```{r}
+
+barra <- drop_na(barra) #Removing NA values in data set
+
+str(barra) #check clean data set
+
+```
+
+
+
+# Now graph data using ggplot2
+
+```{r}
+
+ggplot(barra, aes(x = CalendarYear , y = Tonnes))+ #Comparing catch tonnage over time
+  geom_smooth(se=FALSE)+
+  geom_point()
+  
+```
+
+
+
+
+
+
